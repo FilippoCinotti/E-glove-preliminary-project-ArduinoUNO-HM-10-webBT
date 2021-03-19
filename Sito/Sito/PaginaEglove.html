@@ -1,0 +1,91 @@
+<html>
+      <title>E-glove</title>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+      <script src="https://unpkg.com/p5ble@0.0.4/dist/p5.ble.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
+  <script language="javascript" type="text/javascript" src="bluetooth.js"></script>
+  <script language="javascript" type="text/javascript" src="commands.js"></script>
+  <script language="javascript" type="text/javascript" src="drawScreen.js"></script>
+  <script language="javascript" type="text/javascript" src="BluetoothGUI.js"></script>
+  <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
+  <script src="p5.ble.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+  <!-- This line removes any default padding and style.
+       You might only need one of these values set. -->
+    <style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("hand.jpg");
+  min-height: 100%;
+}
+    .bgimg-2 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("Prototipo_coll.png");
+  min-height: 100%;
+}
+
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+    canvas {
+  display: block;
+        position: absolute;
+}
+    
+ .google-maps {
+  position: relative;
+  padding-bottom: 75%; /* Definisco l'aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+.google-maps > iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+</style>
+
+<body>
+    <!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="#home" class="w3-bar-item w3-button w3-wide">E-GLOVE</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="Sito.html" class="w3-bar-item w3-button">HOMEPAGE</a>
+    </div>
+    <!-- Hide rightSito.html-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+</nav>
+</body>
+</html>

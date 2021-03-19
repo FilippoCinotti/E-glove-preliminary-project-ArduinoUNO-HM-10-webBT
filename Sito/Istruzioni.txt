@@ -1,0 +1,6 @@
+Istruzioni per la corretta lettura/esecuzione files:
+
+1) Scaricare brackets (http://brackets.io/) -> Consente di generare un server virtuale sul proprio PC
+2) Aprire il file "Sito.html" con brackets
+3) Andare su File>Live Preview
+4) Navigare sul sito :)

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<title>MeCFES: write the future</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+<script src="https://unpkg.com/p5ble@0.0.4/dist/p5.ble.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/addons/p5.dom.js"></script>
+    <script src="sketchBT.js"></script>
+    
+
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("hand.jpg");
+  min-height: 100%;
+}
+    .bgimg-2 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("Prototipo_coll.png");
+  min-height: 100%;
+}
+        .bgimg-3 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("MC.jpg");
+  min-height: 100%;
+}
+        .bgimg-4 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("pat.jpg");
+  min-height: 100%;
+}
+
+       .staffimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("Rune.jpg");
+  
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+    canvas {
+  display: block;
+        position: absolute;
+}
+    
+ .google-maps {
+  position: relative;
+  padding-bottom: 75%; /* Definisco l'aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+.google-maps > iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+</style>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="#home" class="w3-bar-item w3-button w3-wide">MeCFES</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="#connetti" class="w3-bar-item w3-button">LA NOSTRA MISSIONE</a>
+      <a href="#eglove" class="w3-bar-item w3-button"><i class="fa fa-th"></i> E-GLOVE</a>
+      <a href="#mc" class="w3-bar-item w3-button"><i class="fa fa-th"></i> MeCFES</a>
+      <a href="#paziente" class="w3-bar-item w3-button"><i class="fa fa-user"></i> AREA PAZIENTE</a>
+      <a href="#scopri" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i>  SCOPRI DI PIU'</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Chiudi ×</a>
+  <a href="#connetti" onclick="w3_close()" class="w3-bar-item w3-button">LA NOSTRA MISSIONE</a>
+  <a href="#eglove" onclick="w3_close()" class="w3-bar-item w3-button">E-GLOVE</a>
+  <a href="#mc" onclick="w3_close()" class="w3-bar-item w3-button">MeCFES</a>
+  <a href="#paziente" onclick="w3_close()" class="w3-bar-item w3-button">AREA PAZIENTE</a>
+  <a href="#scopri" onclick="w3_close()" class="w3-bar-item w3-button"> SCOPRI DI PIU'</a>
+</nav>
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-left w3-text-white" style="padding:48px">
+    <span class="w3-jumbo w3-hide-small">Scrivi il futuro con le tue mani</span><br>
+    <span class="w3-xxlarge w3-hide-large w3-hide-medium">Scrivi il futuro con le tue mani</span><br>
+    <span class="w3-large">Non perdere altro tempo</span>
+    <p><a href="#eglove" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Inizia ora</a></p>
+  </div> 
+  <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+</header>
+
+<!-- Connetti i tuoi dispositivi -->
+  <div class="w3-container" style="padding:40px 16px" id="connetti"></div>
+    <h3 class="w3-center">LA NOSTRA MISSIONE</h3>
+    <div>
+      <p class="w3-center" style="padding:18px 40px"> MeCFES nasce con l'obiettivo di fornire a pazienti affetti da disabilita' motorie all'arto superiore un dispositivo <b>leggero </b>, <b>indossabile</b> e <b>mini-invasivo</b> in grado di modificare in maniera profonda la loro quotidianita'.<br>
+    
+    In questa ottica, la corrente versione di MeCFES e' stata direttamente progettata al fine di confentire agli attori coinvolti nel processo di riabilitazione della mano, uno strumento utile alla valutazione ed al miglioramento delle performance motorie (es. forza della presa della mano).<br>
+          Oltre al dispositivo MeCFES, che utilizza segnale EMG prodotto autonomamente dal paziente per il controllo della stimolazione elettrica funzionale ai muscoli preposti al controllo dei movimenti della mano, la recente aggiunta del dispositivo E-glove garantisce la possibilita' di avere un ulteriore controllo sulla forza esercitata garantendo una presa ottimale anche nelle condizioni piu' difficili sfruttando un sistema di retroazione integrato nel dispositivo. </p>
+    
+    </div>
+  
+    <div class="w3-container w3-dark-grey" style="padding:40px 16px">
+        <h3 class="w3-center">IN QUATTRO PAROLE...</h3>
+  <div class="w3-row-padding w3-center" style="margin-top:64px">
+    <div class="w3-quarter">
+      <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
+      <p class="w3-large">Responsive</p>
+      <p>MeCFES e' in grado di adattarsi alle necessita' del paziente accompagnandolo in maniera graduale durante tutto il percorso di riabilitazione. </p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-bluetooth w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Connesso</p>
+      <p>Grazie alla tecnologia BT integrata all'interno del dispositivo, i dati sono continuamente monitorabili, sia da desktop che da tablet o telefono.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-leaf w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Wearable</p>
+      <p>Uno dei principali obiettivi di MeCFES e' la realizzazione di un dispositivo efficace e funzionale, ma anche leggero, comodo e discreto.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Aggiornamento costante</p>
+      <p>MeCFES e' continuamente aggiornato con nuove features al fine di migliorarne prestazioni, comodita' ed utilizzabilita' per il paziente.</p>
+    </div>
+  </div>
+</div>
+    
+    <div class="w3-container w3-dark-grey" style="padding:30px 0px"></div>
+    
+    
+    <!-- E-glove -->
+<div class="bgimg-2 w3-display-container w3-grayscale-min " id="eglove" style="margin-top:0px" >
+    <p align="right"><a href="PaginaEglove.html" class=" w3-button w3-white w3-padding-large w3-large w3-margin-bottom w3-opacity w3-hover-opacity-off">Inizia ad utilizzare E-glove</a></p>
+</div>    
+    
+       <!-- MeCFES -->
+<div class="bgimg-3 w3-display-container w3-grayscale-min" id="mc" style="margin-top:20px">
+    <p align="right"><a href="MeCFES.html" class=" w3-button w3-white w3-padding-large w3-large w3-margin-bottom w3-opacity w3-hover-opacity-off">Inizia ad utilizzare MeCFES</a></p>
+</div>    
+    
+    
+       <!-- Area pazienti -->
+<div class="bgimg-4 w3-display-container w3-grayscale-min" id="paziente" style="margin-top:20px">
+    <p align="right"><a href="PaginaEglove.html" class="w3-button w3-white w3-padding-large w3-large w3-margin-bottom w3-opacity w3-hover-opacity-off" >Accedi all'area paziente</a></p>
+</div>    
+    
+
+
+<!-- "Scrivi il tuo futuro" -->
+<div class="w3-container w3-light-grey" style="padding:128px 16px">
+  <div class="w3-row-padding">
+    <div class="w3-col m6">
+      <h3>Scrivi il tuo futuro.</h3>
+      <p>Gli studi fatti hanno dimostrato una migliore capacita' riabilitativa tramite l'utilizzo di stimolazione elettrica funzionale (FES).</p>
+      <p><a href="#work" class="w3-button w3-black"><i class="fa fa-th"> </i> Scopri di piu' su MeCFES </a></p>
+    </div>
+    <div class="w3-col m6">
+      <img class="w3-image w3-round-large" src="Insieme.gif" alt="Aided - Unaided" width="700" height="394">
+    </div>
+  </div>
+</div>
+
+<!-- Team Section -->
+<div class="w3-container" style="padding:128px 16px" id="scopri">
+  <h3 class="w3-center">IL TEAM</h3>
+  <p class="w3-center w3-large">Coloro che lavorano a questo progetto</p>
+  <div class="w3-row-padding w3-grayscale" style="margin-top:64px">
+    
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+      </div>
+    </div>
+      <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="Rune.jpg" alt="Rune" style="width:100%">
+        <div class="w3-container">
+          <h3>Rune Thorsen</h3>
+          <p class="w3-opacity">Fondatore & ricercatore</p>
+          <p> Ricerca e sviluppo di sistemi per ripristinare/facilitare movimenti funzionali sui soggetti con lesioni neurologiche tramite segnali biologici e stimolazione elettrica funzionale. E' da anni impegnato sul progetto MeCFES.</p>
+          <p><a class="w3-button w3-light-grey w3-block" href="http://www.thorsen.it/homepage/aboutme/aboutme_it.html" ><i class="fa fa-envelope"></i> Contatta</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <img src="Filippo.jpg" alt="Filippo" style="width:100%">
+        <div class="w3-container">
+          <h3>Filippo Cinotti</h3>
+          <p class="w3-opacity">Studente - ricercatore</p>
+          <p>Studente di ingegneria biomedica presso il Politecnico di Milano e neo-laureato presso la UIC a Chicago. Ricercatore nell'ambito delle neuroprotesi all'interno del percorso di tesi di laurea. Ha lavorato all'implementazione dell' E-glove.</p>
+          <p><a class="w3-button w3-light-grey w3-block" href="filippo.cinotti96@gmail.com"><i class="fa fa-envelope"></i> Contatta</a></p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Promo Section "Statistics" -->
+<div class="w3-container w3-row w3-center w3-dark-grey w3-padding-64">
+  <div class="w3-quarter">
+    <span class="w3-xxlarge">14+</span>
+    <br>Partners
+  </div>
+  <div class="w3-quarter">
+    <span class="w3-xxlarge">14+</span>
+    <br>Pubblicazioni
+  </div>
+  <div class="w3-quarter">
+    <span class="w3-xxlarge">89+</span>
+    <br>Pazienti soddisfatti
+  </div>
+  <div class="w3-quarter">
+    <span class="w3-xxlarge">40+</span>
+    <br>Meetings
+  </div>
+</div>
+
+<!-- Work Section -->
+<div class="w3-container" style="padding:128px 16px" id="work">
+  <h3 class="w3-center">Il NOSTRO LAVORO</h3>
+  <p class="w3-center w3-large">Quali risultati sono gia' stati raggiunti</p>
+
+  <div class="w3-row-padding" style="margin-top:64px">
+    <div class="w3-col l3 m6">
+      <img src="foto1.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A microphone">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="foto5.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A phone">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="foto2.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A drone">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="foto6.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Soundbox">
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-section">
+    <div class="w3-col l3 m6">
+      <img src="foto3.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A tablet">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="foto7.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A camera">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="foto4.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A typewriter">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="foto8.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A tableturner">
+    </div>
+  </div>
+</div>
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+  <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">×</span>
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+    <img id="img01" class="w3-image">
+    <p id="caption" class="w3-opacity w3-large"></p>
+  </div>
+</div>
+
+<!-- Skills Section -->
+<div class="w3-container w3-light-grey w3-padding-64">
+  <div class="w3-row-padding">
+    <div class="w3-col m6">
+      <h3>Formazione ed interessi.</h3>
+      <p>Formazione in ingegneria biomedica con notevole interesse nei seguenti campi:<br>
+      </p>
+        <p><i>Elettronica, embedded software, programmazione, meccanica, biomedicina,<br> gestione di progetti di ricerca clinica, ricerca, protocolli sperimentali, esecuzione di esperimenti.</i></p>
+    </div>
+    <div class="w3-col m6">
+      <p class="w3-wide"><i class="fa fa-usb w3-margin-right"></i>Elettronica</p>
+      <div class="w3-grey">
+        <div class="w3-container w3-dark-grey w3-center" style="width:90%">90%</div>
+      </div>
+      <p class="w3-wide"><i class="fa fa-stethoscope w3-margin-right"></i>Ricerca clinica</p>
+      <div class="w3-grey">
+        <div class="w3-container w3-dark-grey w3-center" style="width:85%">85%</div>
+      </div>
+      <p class="w3-wide"><i class="fa fa-superscript w3-margin-right"></i>Ingegneria</p>
+      <div class="w3-grey">
+        <div class="w3-container w3-dark-grey w3-center" style="width:75%">75%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pricing Section -->
+<div class="w3-container w3-center w3-dark-grey" style="padding:128px 16px" id="pricing">
+    
+  <h3>PUBBLICAZIONI</h3>
+  <p class="w3-large">Di seguito sono mostrate le pubblicazioni piu' recenti che riguardano MeCFES</p>
+  <div class="w3-row-padding" style="margin-top:64px">
+    <div class="w3-third w3-section">
+      <ul class="w3-ul w3-white w3-hover-shadow">
+        <li class="w3-black w3-padding-32">A Non-Invasive Neuroprosthesis Augments Hand Grasp Force In Individuals With Cervical Spinal Cord Injury - The Functional and Therapeutic Effects.</li>
+        <li class="w3-padding-16"><b>Anno di pubblicazione </b> <p> 2013</p></li>
+          <li class="w3-padding-16"><b>Obiettivi </b> <p>The primary purpose of this study was to evaluate myoelectrically controlled functional electrical stimulation (MeCFES) for enhancing the tenodesis grip in people with tetraplegia. The second aim was to estimate the potential number of candidates for the MeCFES device. The application of MeCFES provides the user with direct control of the grasp force as opposed to triggered FES systems.</p></li>
+      
+        <li class="w3-light-grey w3-padding-24">
+          <a class="w3-button w3-black w3-padding-large" href="https://www.hindawi.com/journals/tswj/2013/836959/">LEGGI</a>
+        </li>
+      </ul>
+    </div>
+    <div class="w3-third">
+      <ul class="w3-ul w3-white w3-hover-shadow">
+        <li class="w3-red w3-padding-48">Myoelectrically driven functional electrical stimulation may increase motor recovery of upper limb in poststroke subjects: A randomized controlled pilot study.</li>
+        <li class="w3-padding-16"><b>Anno di pubblicazione </b> <p> 2013</p></li>
+          <li class="w3-padding-16"><b>Obiettivi </b> <p>The objective of this randomized controlled pilot study was to assess the feasibility and effectiveness of myoelectrically controlled functional electrical stimulation (MeCFES) for rehabilitation of the upper limb in poststroke subjects. 
+              </p></li>
+      
+        <li class="w3-light-grey w3-padding-24">
+          <a class="w3-button w3-black w3-padding-large" href="https://pubmed.ncbi.nlm.nih.gov/24203541/">LEGGI</a>
+        </li>
+      </ul>
+    </div>
+    <div class="w3-third w3-section">
+      <ul class="w3-ul w3-white w3-hover-shadow">
+        <li class="w3-black  w3-padding-32">Correlation among lesion level, muscle strength and hand function in cervical spinal cord injury                                                                                                                            </li>
+        <li class="w3-padding-16"><b>Anno di pubblicazione </b> <p> 2013</p></li>
+          <li class="w3-padding-16"><b>Obiettivi </b> <p> To examine the frequency distribution of neurological level of lesion and to investigate the correlation among level, active muscles in the arm and the relation to hand function. 
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              </p></li>
+      
+        <li class="w3-light-grey w3-padding-24">
+          <a class="w3-button w3-black w3-padding-large" href="https://pubmed.ncbi.nlm.nih.gov/23820875/">LEGGI</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+      <div class="w3-row-padding" style="margin-top:64px">
+    <div class="w3-third w3-section">
+      <ul class="w3-ul w3-white w3-hover-shadow">
+        <li class="w3-red w3-padding-32">Battery powered neuromuscular stimulator circuit for use during simultaneous recording of myoelectric signals</li>
+        <li class="w3-padding-16"><b>Anno di pubblicazione </b> <p> 2009</p></li>
+          <li class="w3-padding-16"><b>Obiettivi </b> <p>Surface Functional Electrical Stimulation (FES) requires high stimulation voltages. A step-up transformer in the output stage of the stimulation circuit is often used.In the present technical paper a voltage controlled current source (VCCS) is presented as an alternative to the transformer coupling.
+              <br>
+              <br>
+              </p></li>
+      
+        <li class="w3-light-grey w3-padding-24">
+          <a class="w3-button w3-black w3-padding-large" href="https://www.sciencedirect.com/science/article/abs/pii/S1350453309001386">LEGGI</a>
+        </li>
+      </ul>
+    </div>
+    <div class="w3-third">
+      <ul class="w3-ul w3-white w3-hover-shadow">
+        <li class="w3-black w3-padding-48">Functional electrical stimulation reinforced tenodesis effect controlled by myoelectric activity from wrist extensors.</li>
+        <li class="w3-padding-16"><b>Anno di pubblicazione </b> <p> 2006</p></li>
+          <li class="w3-padding-16"><b>Obiettivi </b> <p>We demonstrated a method for enhancing the tenodesis grip in individuals with sustained tetraplegia at the 6th cervical vertebra neurological level. Subjects used the myoelectric activity from wrist extensor muscles to directly control the electrical stimulation of the extrinsic finger and thumb flexors (flexor pollicis longus and flexor digitorum superficialis/profondus) with the use of a specially designed system, Myoelectrically Controlled Functional Electrical Stimulation (MeCFES). 
+              </p></li>
+      
+        <li class="w3-light-grey w3-padding-24">
+          <a class="w3-button w3-black w3-padding-large" href="https://www.rehab.research.va.gov/jour/06/43/2/Thorsen.html">LEGGI</a>
+        </li>
+      </ul>
+    </div>
+    <div class="w3-third w3-section">
+      <ul class="w3-ul w3-white w3-hover-shadow">
+        <li class="w3-red  w3-padding-32">Experimental protocol for the kinematic analysis of the hand: Definition and repeatability.               </li>
+        <li class="w3-padding-16"><b>Anno di pubblicazione </b> <p> 2005</p></li>
+          <li class="w3-padding-16"><b>Obiettivi </b> <p> A quantitative and objective method based on the optoelectronic kinematic analysis of hand segments and on the calculation of global and partial parameters, which provide measures of the degree of long finger and thumb extension is proposed for the evaluation of the hand's voluntary range of motion and maximal opening of the fingers and thumb. 
+              <br>
+              <br>
+              </p></li>
+      
+        <li class="w3-light-grey w3-padding-24">
+          <a class="w3-button w3-black w3-padding-large" href="https://pubmed.ncbi.nlm.nih.gov/15978812/">LEGGI</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+    <p><br></p>
+     <p><br></p>
+    <p class="w3-center"><a href="http://www.thorsen.it/homepage/aboutme/publications.html" class="w3-center w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Scopri di piu'</a></p>
+</div>
+
+<!-- Contact Section -->
+<div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
+  <h3 class="w3-center">CONTATTI</h3>
+  <p class="w3-center w3-large">Per qualsiasi informazione non esitare a contattarci. Inviaci un messaggio:</p>
+  <div style="margin-top:48px">
+    <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> Milano, IT</p>
+    <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +39 3486463807</p>
+    <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: filippo.cinotti96@mail.com</p>
+    <br>
+    <form action="/action_page.php" target="_blank">
+      <p><input class="w3-input w3-border" type="text" placeholder="Nome" required name="Nome"></p>
+      <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
+      <p><input class="w3-input w3-border" type="text" placeholder="Oggetto" required name="Oggetto"></p>
+      <p><input class="w3-input w3-border" type="text" placeholder="Messagio" required name="Messaggio"></p>
+      <p>
+        <button class="w3-button w3-black" type="submit">
+          <i class="fa fa-paper-plane"></i> INVIA MESSAGGIO
+        </button>
+      </p>
+    </form>
+    </div>
+    </div>
+    <!-- Image of location/map -->
+    <div class="w3-container w3-white" style="padding:40px 16px">
+        <h3 class="w3-center">DOVE SIAMO</h3>
+        <div class="google-maps" >
+  
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9248.597408981941!2d9.122248643896306!3d45.47107361944258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c14d3a30d741%3A0x1ec4e675e5530c33!2sPolo%20Tecnologico%2C%20IRCCS%20Don%20Carlo%20Gnocchi!5e0!3m2!1sit!2sit!4v1597235055346!5m2!1sit!2sit" frameborder="0" style="border:0" allowfullscreen></iframe>
+</div>
+      </div>
+  
+
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <p>Powered by <a href="https://www.linkedin.com/in/filippo-cinotti-360413173/" title="Filippo Cinotti" target="_blank" class="w3-hover-text-green">Filippo Cinotti</a></p>
+</footer>
+ 
+<script>
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+  } else {
+    mySidebar.style.display = 'block';
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+}
+</script>
+
+</body>

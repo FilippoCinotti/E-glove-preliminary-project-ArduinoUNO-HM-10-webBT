@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="en"><head>
+    <title>
+        Controllo E-glove
+    </title>
+    <script src="p5.js"></script>
+    <script src="p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8">
+  </head>
+  <body>
+      <header>
+          <nav>
+              <ul>
+              <li> <a href="#"> Home </a>
+              <ul>
+                  <li> <a href="#"> Connetti i tuoi dispositivi </a></li>
+              </ul>  
+              </li>
+              <li> <a href="#"> E-Glove </a></li>
+              <li> <a href="#"> MeCFES </a></li>
+              <li> <a href="#"> Area paziente </a>
+                  <ul>
+                  <li> <a href="#"> Informazioni paziente </a></li>
+                  <li> <a href="#"> Tieni traccia dei progressi!</a></li>
+                  </ul>
+              
+              </li> 
+              <li> <a href="#"> Scopri di piu'</a>
+                  <ul>
+                  <li> <a href="#"> Chi siamo </a></li>
+                  <li> <a href="#"> Come funziona il nostro dispositivo </a></li>
+                  <li> <a href="#"> Contatti </a></li>
+                  </ul>
+              </li>
+                  </ul>
+          </nav>
+      
+      </header>
+    <script>
+
+let img;
+let imgNS;
+        let imgN;
+        let imgS;
+let imgEO;
+        let imgE;
+        let imgO;
+        
+        
+
+
+var Fpollice=0;
+var Findice=0;
+var Fmedio=0;
+var north;
+var south;
+var east;
+var west;
+var pr1=25;
+var pr2=55;
+var pr3=25;
+var pr4=75;
+var stlValue;
+var stCountValue;
+var DirezioneEO;
+var DirezioneNS;
+var Movimento;
+var Contatto;
+
+function setup() {
+  //sets Background to RBG White
+  background(color(255, 255, 255));
+  
+  //img = loadImage("normal.jpeg");
+  
+  //sets createCanvas of window
+  createCanvas(1000, 1000);
+  //cir1 = createShape(ELLIPSE, 50, 250, 50, 50);
+  
+  //changes color mode to HSB for radial color
+  colorMode(HSB, 360, 100, 100);
+  imgNS = loadImage("NS.png");
+    imgN = loadImage("N.png");
+    imgS = loadImage("S.png");
+
+  img = loadImage("mano1.png");
+  imgEO = loadImage("EO.png");
+    imgE = loadImage("E.png");
+    imgO = loadImage("O.png");
+    
+    
+}
+//var infoot, outfoot, moving, north, south, east, west;
+//var pr1=250, pr2=100, pr3=999, pr4=500;
+//var stlValue, stCountValue, cadValue, velValue, mepValue;
+
+//first 3 are vars, then 1 direction (1-4), next 4 are the pressure values, last 5 are the values required
+
+
+function draw() {
+  background(255);
+  textSize(24);
+  fill(360, 0, 0);
+  image(imgNS, 625, 730);
+ image(img, 0, 100);
+ image(imgEO, 625, 855);
+ text("E-Glove",500,90);
+         
+   
+    
+  //Sets and updates the text values for the labels and data.
+  text("Forza pollice:", 650, 150);
+  //var stL = Fpollice;
+  text( + Fpollice + "N", 700, 200);
+  
+  text("Forza indice", 650, 250);
+  //var stCount = stCountValue;
+  text(+ Findice + "N", 700, 300);
+  
+  text("Forza medio", 650, 350);
+  //var cad = cadValue;
+  text(+ Fmedio + "N", 700, 400);
+  
+  text("Forza di contatto", 650, 450);
+  //var vel = velValue;
+  text( + Contatto + "N", 700, 500);
+  
+  text("Condizioni mano:", 650, 600);  
+  if (Movimento==1) {
+    text("In Movimento", 700, 650);
+  } else {
+    text("Stabile", 700, 650);
+  }
+  
+  text("Direzione Nord - Sud:", 650, 725);
+  if(DirezioneNS == 1){
+  
+  image(imgN, 625, 730);
+  text("Nord",700, 777);
+  }
+  else if(DirezioneNS == 2){
+    
+    image(imgS, 625, 730);
+    text("Sud", 700, 777);
+  }
+  else{
+    
+    image(imgNS, 625, 730);
+    text("Ferma", 700, 777);
+  }
+  
+ 
+  text("Direzione Est - Ovest:", 650, 850);
+  if(DirezioneEO == 1){
+    
+    image(imgE, 625, 855);
+    text("Est", 700, 902);
+  }
+  else if(DirezioneEO == 2){
+    
+    image(imgO, 625, 855);
+    text("Ovest", 700, 902);
+  }
+  else{
+    
+    image(imgEO, 625, 855);
+    text("Ferma", 700, 902);
+  }
+
+    
+    
+//  fill(color(random(0, 100), 90, 90));
+    noStroke();
+    fill(color(100-pr1/3,90,90));
+    circle(165, 210, map(pr1,0, 200, 10, 110));
+    
+    fill(color(100-pr2/3,90,90));
+    circle(140, 538, map(pr4,0, 200, 10, 110));
+    
+    fill(color(100-pr2/3,90,90));
+    circle(258, 175, map(pr3,0, 200, 10, 110));
+    
+    fill(color(100-pr3/3,90,90));
+    circle(55, 420, map(pr2,0, 200, 10, 110));
+  
+}
+      </script>
+  
+
+</body></html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<title>MeCFES: write the future</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+<script src="https://unpkg.com/p5ble@0.0.4/dist/p5.ble.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/addons/p5.dom.js"></script>
+    <script src="sketchBT.js"></script>
+    
+
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("hand.jpg");
+  min-height: 100%;
+}
+    .bgimg-2 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("Prototipo_coll.png");
+  min-height: 100%;
+}
+        .bgimg-3 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("MC.jpg");
+  min-height: 100%;
+}
+        .bgimg-4 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("pat.jpg");
+  min-height: 100%;
+}
+
+       .staffimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("Rune.jpg");
+  
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+    canvas {
+  display: block;
+        position: absolute;
+}
+    
+ .google-maps {
+  position: relative;
+  padding-bottom: 75%; /* Definisco l'aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+.google-maps > iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+    .aligncenter {
+    text-align: center;
+}
+
+</style>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="#home" class="w3-bar-item w3-button w3-wide">MeCFES</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+        <a href="#comef" class="w3-bar-item w3-button"><i class="fa fa-search"></i> COME FUNZIONA</a>
+      <a href="#elettrodi" class="w3-bar-item w3-button"><i class="fa fa-bolt"></i> ELETTRODI</a>
+      <a href="#mc" class="w3-bar-item w3-button"><i class="fa fa-play"></i> INIZIA AD UTILIZZARE MeCFES</a>
+      <a href="Sito.html" class="w3-bar-item w3-button"> HOMEPAGE </a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Chiudi ×</a>
+  <a href="#comef" onclick="w3_close()" class="w3-bar-item w3-button">COME FUNZIONA</a>
+  <a href="#elettrodi" onclick="w3_close()" class="w3-bar-item w3-button">ELETTRODI</a>
+  <a href="#mc" onclick="w3_close()" class="w3-bar-item w3-button">INIZIA AD UTILIZZARE MeCFES</a>
+  <a href="Sito.html" onclick="w3_close()" class="w3-bar-item w3-button">HOMEPAGE</a>
+</nav>
+
+<!-- Header with full-height image -->
+<header class="bgimg-3 w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-left w3-text-white" style="padding:48px">
+    <span class="w3-jumbo w3-hide-small">MeCFES</span><br>
+    <span class="w3-xxlarge w3-hide-large w3-hide-medium">MeCFES</span><br>
+      <span class="w3-large">Spazio ai tuoi muscoli</span>
+    <p><a href="#mc" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Inizia ora</a></p>
+  </div> 
+  <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+</header>
+
+<!-- Connetti i tuoi dispositivi -->
+  <div class="w3-container" style="padding:40px 16px" id="comef"></div>
+    <h3 class="w3-center">COME FUNZIONA</h3>
+    <div>
+      <p class="w3-center" style="padding:18px 40px"> Il progetto MeCFES (Myoelectrically controlled functional electrical stimulation) ha come scopo principale la riabilitazione di pazienti affetti da disabilita motorie. Si rivolge verso persone con danni al sistema nervoso centrale quali ictus, lesioni spinali, sclerosi multipla o trauma cranico, etc. <br>
+          
+           <div class="w3-row-padding w3-center" style="padding:18px 40px">
+    <div class="w3-quarter">
+      <i class="fa fa-hand-paper-o w3-margin-bottom w3-jumbo w3-center"></i>
+      <p class="w3-large">Arti Superiori</p>
+      <p>MeCFES si rivolge principalmente sulla stimolazione ed alla riabilitazione degli arti superiori, sebbene la tecnica potrebbe essere estesa anche agli arti inferiori, con metodologie simili.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-bolt w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Stimolazione Elettrica Funzionale</p>
+      <p>E' stato dimostrato che in pazienti con lesione spinale oppure ictus, l'utilizzo di una neuroprotesi possa portare notevoli benefici da un punto di vista di efficacia e risultati della riabilitazione.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Controllo mioelettrico</p>
+      <p>Il MeCFES è un dispositivo elettronico innovativo che combina stimolazione elettrica con controllo mioelettrici per sostenere vari movimenti utilizzando l'energia fornita da batterie.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-eye w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large"> Attivazione volontaria</p>
+      <p>L'attivita' di MeCFES puo' essere controllata direttamente dal paziente attraverso movimenti del polso, la quale intensita' va a definire in maniera proporzionale l'intensita' di stimolazione.</p>
+
+  </div>
+</div>
+        
+        <div class="w3-container w3-light-grey" style="padding:18px 140px">
+
+ <br>
+            <h3 class="w3-center">PRINCIPI DI FUNZIONAMENTO</h3>
+            
+   MecFES si basa sul principio per il quale utilizzando elettrodi superficiali posti sulla cute sopra i muscoli interessati è possible rinforzare i movimenti voluntari. Appunto il fatto che si cerca di aumentare il contrazione con un controllo che rispecchia immediatamente quello che l'utente cerca di fare, (antiche techniche di controllo chiuso come spesso utilizzati nei neuroprotesi) è ipotizzato vantaggioso per l'utente.
+            <br>
+            
+
+Abbiamo dimostrato che in alcuni soggetti con tetraplegia si potrebbe aumentare la forza della presa notevolmente. Ci sono anche discrete evidenze che soggetti con lesioni cerebrale ottengono vantaggi nella riabilitazione utilizzando il sistema per la rieducazione della mano.
+            <br>
+            <br>
+            
+   <p class="aligncenter">
+
+            <img class="w3-image w3-round-large" src="Insieme.gif" alt="Aided - Unaided" width="700" height="394" alt="centered image" >
+            </p>
+            
+            <br>
+            <br>
+
+
+Il sistema utilizza elettrodi di superficie sia per la registrazione dei segnali volontarie sia per la stimolazione. La combinazione tra stimolazione (FES) e signali mioelettrici (EMG) pone alcuni sfide tecniche. La difficoltà principale al livello tecnologico è stato di essere in grado di registrare tali segnali, a loro volta molto deboli, mentre si stimola lo stesso muscolo con un intensità milioni di volte più grande del segnale mioelettrico.
+            
+            <br>
+            <br>
+            <br>
+
+            <h4 class="w3-center"><i>"Un analogia potrebbe essere di immaginarsi di cantare a pieni polmoni mentre si ascolta il bisbiglio di un altro."</i></h4>
+            
+            <br>
+            <br>
+
+Risolvendo questo problema il risultato è che un muscolo debole innesca la stimolazione ottenendo come risultato una maggior contrazione degli stessi. 
+            <br>
+            <br>
+            <br>
+
+            <h4 class="w3-center"><i>"Con microfono amplificatore e casse, un sottovoce viene amplificato per raggiungere migliaia di orecchie."</i></h4>
+            
+            <br>
+            <br>
+            
+            Nello stesso modo il MeCFES utilizza il segnale di alcuni fibre muscolare ancora sotto controllo del soggetto per attivare altri unità motorie, non più sotto controllo volontario con il risultato di esercitare maggior forza. La stimolazione segue l’aumento o diminuzione della contrazione volontaria in tempo reale ottenendo l’effetto di un servosterzo. Questo particolare consente di ottenere un movimento o forza senza eccessiva fatica da parte dell'utente disabile. I parametri che intervengono nella regolazione del neuroprotesi possono essere configurabili tramite un PC al fine di ottenere il controllo ottimale della mano da parte del paziente.<br>
+    
+    
+    
+    </div>
+  
+ 
+    
+    </div>
+     <h3 class="w3-center"><br>VANTAGGI FUNZIONALI E TERAPEUTICI</h3>
+    <div>
+        <p class="w3-center" style="padding:18px 40px"> Nella riabilitazione neuromotoria di pazienti con ictus e' noto come il <b>coinvolgimento </b> del soggetto sottoposto alla terapia sia di essenzialee importanza (<i>task oriented movement therapy</i>). Il metodo MeCFES consente al terapista di cominciare a lavorare insieme al paziente con movimenti semplici e molto deboli ottenendo risultati fin da subito. Spesso, la debolezza e le difficolta' del paziente rendono la partecipazione attiva difficile e demoralizzante perchè potrebbe sembrare impossibile raggiunger l’obiettivo. Al contrario, l’aumento della forza di contrazione che guida il movimento introdotto dal MeCFES permette ad alcuni pazienti di iniziare a svolgere degli esercizi funzionali e <i>task oriented</i> fin dalle prime fasi della riabilitazione. Così facendo <b> si viene innescando un feedback positivo; il soggetto si sente incoraggiato a lavorare coscientemente non solo con l'attivazione ma anche il rilassamento muscolare.</b>
+            <br>
+Persone con mieolesione potrebbe, invece, ottenere un controllato incremento della forza esibito in modo da ottenere una presa più ferma degli oggetti nella vita quotidiana. Un ultimo importate aspetto riguarda il problema della percezione del proprio movimento. Il MeCFES funge anche da bio-feedback perchè la stimolazione coinvolge anche la propriocezione.
+
+        </p>
+        
+        <h3 class="w3-center"><br>COME SI COSTRUISCE UNA NEUROPROTESI</h3>
+        <p class="w3-center" style="padding:18px 40px">Lo sviluppo scientifico del progetto ha portato ad una serie di pubblicazioni che descrivono i dettagli del sistema. Innanzitutto serve del hardware elettronico costruito appositamente al fine di erogare la stimolazione simultaneamente con la registrazione del EMG. L’algoritmo di controllo richiede un elaborazione digitale che potrebbe essere eseguita da tanti recenti microcontrollori. Lo sviluppo elettronico ha reso possibile la miniaturizzazione del sistema al punto che le batterie che devono fornire l’energia diventano la parte più ingombrante, ma anche li il progresso tecnologico lavora per noi. L’ultima parte ancora da risolvere al meglio è come realizzare un sistema indossabile. Attualmente i prototipi MeCFES richiedono che gli elettrodi vengono posizionati manualmente e collegati con fili di media lunghezza al unità di controllo. Seppure risulta funzionale sarebbe auspicabile facilitare l’applicazione nel modo che utente potrebbe ‘indossare’ il neuroprotesi in autonomia.</p>
+        
+        <h3 class="w3-center"><br>PROSPETTIVE FUTURE</h3>   
+        <p class="w3-center" style="padding:18px 40px">Un obiettivo attuale è di rendere il sistema disponibile per tutti coloro che desiderino testare la tecnica e valutare se possa essere un soluzione per aumentare la propria autonomia e ridurre la disabilità. Sembra che ci sia una tendenza di auto-aiuto e di maggior coinvolgimento nella ricerca di soluzioni per i propri bisogni di superare le sfide della vita quotidiana. Insieme al movimento dei <i>"thinkers"</i> e <i>"makers"</i> le basi tecnologiche sono pronte per sostenere una <b>Neuroprotesi free and open source</b>, ovvero rendere possibile la riabilitazione fai-da-te, ovviamente in collaborazione con clinici ed istituzioni competenti.</p>  <br>
+          
+
+
+</div>
+    
+    <!-- Work Section -->
+<div class="w3-container w3-dark-grey" style="padding:128px 16px" id="work">
+  <h3 class="w3-center">Il NOSTRO LAVORO</h3>
+  <p class="w3-center w3-large">Alcuni esempi dei risultati gia' raggiunti</p>
+
+  <div class="w3-row-padding" style="margin-top:64px">
+    <div class="w3-col l3 m6">
+      <img src="foto1.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A microphone">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="foto5.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A phone">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="foto2.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A drone">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="foto6.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="Soundbox">
+    </div>
+  </div>
+
+  <div class="w3-row-padding w3-section">
+    <div class="w3-col l3 m6">
+      <img src="foto3.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A tablet">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="foto7.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A camera">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="foto4.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A typewriter">
+    </div>
+    <div class="w3-col l3 m6">
+      <img src="foto8.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity" alt="A tableturner">
+    </div>
+  </div>
+</div>
+    
+    <!-- "Elettrodi" -->
+     <div class="w3-container " style="padding:40px 16px" id="elettrodi"></div>
+    <h3 class="w3-center">ELETTRODI</h3>
+    <div>
+        <p class="w3-center w3-white" style="padding:18px 40px"> Qui sotto e' illustrato con fotografie la possibile variazione tra due soggetti rispetto al posizionamento dei elettrodi. E' possibile osservare come gli elettrodi di stimolazione siano soggetti a maggior variazione individuale. Puo' inoltre capitare di dover  utilizzare un elettrodo più grande per quello prossimale.
+            
+         <br></p>
+<div class="w3-container w3-red" style="padding:28px 16px">
+  <div class="w3-row-padding">
+    <div class="w3-col m6" style="padding:20px 20px">
+      <h3>Elettrodi di registrazione.</h3>
+      <p>Per rinforzare la presa tenodesi gli elettrodi di rilevamento viene posizionati sulla pelle sopra il muscolo estensore del polso (estensore carpi radialis e/o estensore carpi ulnaris). Sul gomito si vede l'elettrodo di riferimento il quale non ha particolamente importanza il collocamento.</p>
+      <p><a href="#comef" class="w3-button w3-black"><i class="fa fa-search"> </i> Scopri di piu' su MeCFES </a></p>
+    </div>
+    <div class="w3-col m6" style="padding:0px 160px">
+      <img class="w3-image w3-round-large" src="foto2.jpg" alt="elettrodireg" width="300" height="300">
+    </div>
+  </div>
+</div>
+    <div class="w3-container w3-light-grey" style="padding:28px 16px">
+  <div class="w3-row-padding">
+    <div class="w3-col m6" style="padding:0px 160px">
+      <img class="w3-image w3-round-large" src="foto3.jpg" alt="elettrodistim" width="300" height="300">
+    </div>
+    <div class="w3-col m6" style="padding:20px 20px">
+        <h3>Elettrodi di stimolazione.</h3>
+      <p>Qualora si vuole indurre maggior flessione delle dita 2-5 si tenta a stimolare il flessore commune delle dita. Invece se si desidera anche coinvolgere flessione del pollice, l'elettrodo distale potrebbe essere spostato verso di esso.</p>
+      <p><a href="#comef" class="w3-button w3-black"><i class="fa fa-search"> </i> Scopri di piu' su MeCFES </a></p>
+      
+    </div>
+  </div>
+</div>
+    </div>
+
+
+       <!-- MeCFES -->
+<div class="bgimg-3 w3-display-container w3-grayscale-min" id="mc" style="margin-top:0px">
+    <p align="right"><a href="PaginaEglove.html" class=" w3-button w3-white w3-padding-large w3-large w3-margin-bottom w3-opacity w3-hover-opacity-off">Inizia ad utilizzare MeCFES</a></p>
+</div>    
+    
+    
+       <!-- Area pazienti -->
+<div class="bgimg-4 w3-display-container w3-grayscale-min" id="paziente" style="margin-top:20px">
+    <p align="right"><a href="PaginaEglove.html" class="w3-button w3-white w3-padding-large w3-large w3-margin-bottom w3-opacity w3-hover-opacity-off" >Accedi all'area paziente</a></p>
+</div>    
+    
+
+
+
+
+<!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+  <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">×</span>
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+    <img id="img01" class="w3-image">
+    <p id="caption" class="w3-opacity w3-large"></p>
+  </div>
+</div>
+
+
+
+<!-- Pricing Section -->
+<div class="w3-container w3-center" style="padding:128px 16px" id="pricing">
+    
+  <h3>PUBBLICAZIONI</h3>
+  <p class="w3-large">Di seguito sono mostrate le pubblicazioni piu' recenti che riguardano MeCFES</p>
+  <div class="w3-row-padding" style="margin-top:64px">
+    <div class="w3-third w3-section">
+      <ul class="w3-ul w3-light-grey w3-hover-shadow">
+        <li class="w3-black w3-padding-32">A Non-Invasive Neuroprosthesis Augments Hand Grasp Force In Individuals With Cervical Spinal Cord Injury - The Functional and Therapeutic Effects.</li>
+        <li class="w3-padding-16"><b>Anno di pubblicazione </b> <p> 2013</p></li>
+          <li class="w3-padding-16"><b>Obiettivi </b> <p>The primary purpose of this study was to evaluate myoelectrically controlled functional electrical stimulation (MeCFES) for enhancing the tenodesis grip in people with tetraplegia. The second aim was to estimate the potential number of candidates for the MeCFES device. The application of MeCFES provides the user with direct control of the grasp force as opposed to triggered FES systems.</p></li>
+      
+        <li class="w3-grey w3-padding-24">
+          <a class="w3-button w3-black w3-padding-large" href="https://www.hindawi.com/journals/tswj/2013/836959/">LEGGI</a>
+        </li>
+      </ul>
+    </div>
+    <div class="w3-third">
+      <ul class="w3-ul w3-light-grey w3-hover-shadow">
+        <li class="w3-red w3-padding-48">Myoelectrically driven functional electrical stimulation may increase motor recovery of upper limb in poststroke subjects: A randomized controlled pilot study.</li>
+        <li class="w3-padding-16"><b>Anno di pubblicazione </b> <p> 2013</p></li>
+          <li class="w3-padding-16"><b>Obiettivi </b> <p>The objective of this randomized controlled pilot study was to assess the feasibility and effectiveness of myoelectrically controlled functional electrical stimulation (MeCFES) for rehabilitation of the upper limb in poststroke subjects. 
+              </p></li>
+      
+        <li class="w3-grey w3-padding-24">
+          <a class="w3-button w3-black w3-padding-large" href="https://pubmed.ncbi.nlm.nih.gov/24203541/">LEGGI</a>
+        </li>
+      </ul>
+    </div>
+    <div class="w3-third w3-section">
+      <ul class="w3-ul w3-light-grey w3-hover-shadow">
+        <li class="w3-black  w3-padding-32">Correlation among lesion level, muscle strength and hand function in cervical spinal cord injury                                                                                                                            </li>
+        <li class="w3-padding-16"><b>Anno di pubblicazione </b> <p> 2013</p></li>
+          <li class="w3-padding-16"><b>Obiettivi </b> <p> To examine the frequency distribution of neurological level of lesion and to investigate the correlation among level, active muscles in the arm and the relation to hand function. 
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              </p></li>
+      
+        <li class="w3-grey w3-padding-24">
+          <a class="w3-button w3-black w3-padding-large" href="https://pubmed.ncbi.nlm.nih.gov/23820875/">LEGGI</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+      <div class="w3-row-padding" style="margin-top:64px">
+    <div class="w3-third w3-section">
+      <ul class="w3-ul w3-light-grey w3-hover-shadow">
+        <li class="w3-red w3-padding-32">Battery powered neuromuscular stimulator circuit for use during simultaneous recording of myoelectric signals</li>
+        <li class="w3-padding-16"><b>Anno di pubblicazione </b> <p> 2009</p></li>
+          <li class="w3-padding-16"><b>Obiettivi </b> <p>Surface Functional Electrical Stimulation (FES) requires high stimulation voltages. A step-up transformer in the output stage of the stimulation circuit is often used.In the present technical paper a voltage controlled current source (VCCS) is presented as an alternative to the transformer coupling.
+              <br>
+              <br>
+              </p></li>
+      
+        <li class="w3-grey w3-padding-24">
+          <a class="w3-button w3-black w3-padding-large" href="https://www.sciencedirect.com/science/article/abs/pii/S1350453309001386">LEGGI</a>
+        </li>
+      </ul>
+    </div>
+    <div class="w3-third">
+      <ul class="w3-ul w3-light-grey w3-hover-shadow">
+        <li class="w3-black w3-padding-48">Functional electrical stimulation reinforced tenodesis effect controlled by myoelectric activity from wrist extensors.</li>
+        <li class="w3-padding-16"><b>Anno di pubblicazione </b> <p> 2006</p></li>
+          <li class="w3-padding-16"><b>Obiettivi </b> <p>We demonstrated a method for enhancing the tenodesis grip in individuals with sustained tetraplegia at the 6th cervical vertebra neurological level. Subjects used the myoelectric activity from wrist extensor muscles to directly control the electrical stimulation of the extrinsic finger and thumb flexors (flexor pollicis longus and flexor digitorum superficialis/profondus) with the use of a specially designed system, Myoelectrically Controlled Functional Electrical Stimulation (MeCFES). 
+              </p></li>
+      
+        <li class="w3-grey w3-padding-24">
+          <a class="w3-button w3-black w3-padding-large" href="https://www.rehab.research.va.gov/jour/06/43/2/Thorsen.html">LEGGI</a>
+        </li>
+      </ul>
+    </div>
+    <div class="w3-third w3-section">
+      <ul class="w3-ul w3-light-grey w3-hover-shadow">
+        <li class="w3-red  w3-padding-32">Experimental protocol for the kinematic analysis of the hand: Definition and repeatability.               </li>
+        <li class="w3-padding-16"><b>Anno di pubblicazione </b> <p> 2005</p></li>
+          <li class="w3-padding-16"><b>Obiettivi </b> <p> A quantitative and objective method based on the optoelectronic kinematic analysis of hand segments and on the calculation of global and partial parameters, which provide measures of the degree of long finger and thumb extension is proposed for the evaluation of the hand's voluntary range of motion and maximal opening of the fingers and thumb. 
+              <br>
+              <br>
+              </p></li>
+      
+        <li class="w3-grey w3-padding-24">
+          <a class="w3-button w3-black w3-padding-large" href="https://pubmed.ncbi.nlm.nih.gov/15978812/">LEGGI</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+    <p><br></p>
+     <p><br></p>
+    <p class="w3-center"><a href="http://www.thorsen.it/homepage/aboutme/publications.html" class="w3-center w3-button w3-red w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Scopri di piu'</a></p>
+</div>
+
+<!-- Contact Section -->
+<div class="w3-container w3-dark-grey" style="padding:128px 16px" id="contact">
+  <h3 class="w3-center">CONTATTI</h3>
+  <p class="w3-center w3-large">Per qualsiasi informazione non esitare a contattarci. Inviaci un messaggio:</p>
+  <div style="margin-top:48px">
+    <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> Milano, IT</p>
+    <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +39 3486463807</p>
+    <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: filippo.cinotti96@mail.com</p>
+    <br>
+    <form action="/action_page.php" target="_blank">
+      <p><input class="w3-input w3-border" type="text" placeholder="Nome" required name="Nome"></p>
+      <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
+      <p><input class="w3-input w3-border" type="text" placeholder="Oggetto" required name="Oggetto"></p>
+      <p><input class="w3-input w3-border" type="text" placeholder="Messagio" required name="Messaggio"></p>
+      <p>
+        <button class="w3-button w3-black" type="submit">
+          <i class="fa fa-paper-plane"></i> INVIA MESSAGGIO
+        </button>
+      </p>
+    </form>
+    </div>
+    </div>
+    <!-- Image of location/map -->
+    <div class="w3-container w3-white" style="padding:40px 16px">
+        <h3 class="w3-center">DOVE SIAMO</h3>
+        <div class="google-maps" >
+  
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9248.597408981941!2d9.122248643896306!3d45.47107361944258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c14d3a30d741%3A0x1ec4e675e5530c33!2sPolo%20Tecnologico%2C%20IRCCS%20Don%20Carlo%20Gnocchi!5e0!3m2!1sit!2sit!4v1597235055346!5m2!1sit!2sit" frameborder="0" style="border:0" allowfullscreen></iframe>
+</div>
+      </div>
+  
+
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <p>Powered by <a href="https://www.linkedin.com/in/filippo-cinotti-360413173/" title="Filippo Cinotti" target="_blank" class="w3-hover-text-green">Filippo Cinotti</a></p>
+</footer>
+ 
+<script>
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+  } else {
+    mySidebar.style.display = 'block';
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+}
+</script>
+
+</body>

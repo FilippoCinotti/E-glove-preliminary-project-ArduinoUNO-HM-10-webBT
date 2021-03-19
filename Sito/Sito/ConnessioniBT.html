@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>Getting Started with p5.ble.js</title>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
+      <script src="https://unpkg.com/p5ble@0.0.4/dist/p5.ble.js"></script>
+    </head>
+
+    <body>
+      <script>
+      // The serviceUuid must match the serviceUuid of the device you would like to connect
+const serviceUuid = "19b10010-e8f2-537e-4f6c-d104768a1214";
+const serviceUuidMC = "19b10010-e8f2-537e-4f6c-d104768a1214";
+let myCharacteristic;
+let myValue = 0;
+let myBLE;
+let isConnected = false;
+let myBLEMC;
+let isConnectedMC = false;
+let imgEglove_On;
+let imgMC_On; 
+let imgEglove_Off;
+let imgMC_Off; 
+
+function setup() {
+  imgEglove_On = loadImage('Glove_On.png'); // Load the image
+  imgEglove_Off = loadImage('Glove_Off.png'); // Load the image
+  imgMC_On = loadImage('MeCFES_On.png'); // Load the image
+  imgMC_Off = loadImage('MeCFES_Off.png'); // Load the image
+  // Create a p5ble class
+  myBLE = new p5ble();
+  // Create a p5ble class
+  myBLEMC = new p5ble();
+
+  createCanvas(600, 600);
+  background(255);
+  textSize(20);
+  textAlign(CENTER, CENTER);
+
+  // Create a 'Connect' button
+  const connectButton = createButton('Connetti')
+  connectButton.position(60,350);
+  connectButton.mousePressed(connectToBle);
+  
+   // Create a 'Disconnect' button
+  const disconnectButton = createButton('Disconnetti')
+  disconnectButton.position(130,350);
+  disconnectButton.mousePressed(disconnectToBle);
+  
+  
+  // Create a 'Connect' button
+  const connectButtonMC = createButton('Connetti')
+  connectButtonMC.position(380,350);
+  connectButton.mousePressed(connectToBleMeCFES);
+  
+  // Create a 'Disconnect' button
+  const disconnectButtonMC = createButton('Disconnetti')
+  disconnectButtonMC.position(450,350);
+  disconnectButton.mousePressed(disconnectToBleMeCFES);
+}
+
+function connectToBle() {
+  // Connect to a device by passing the service UUID
+  myBLE.connect(serviceUuid, gotCharacteristics);
+}
+
+function connectToBleMeCFES() {
+  // Connect to MeCFES by passing the service UUID
+  myBLEMC.connect(serviceUuidMC, gotCharacteristicsMC);
+}
+
+function disconnectToBle() {
+  // Disonnect to the device
+  myBLE.disconnect();
+  // Check if myBLE is connected
+  isConnected = myBLE.isConnected();
+}
+
+function disconnectToBleMeCFES() {
+  // Disonnect to the device
+  myBLEMC.disconnect();
+  // Check if myBLE is connected
+  isConnectedMC = myBLEMC.isConnected();
+}
+
+
+function onDisconnected() {
+  console.log('Device got disconnected.');
+  isConnected = false;
+}
+function onDisconnectedMC() {
+  console.log('Device got disconnected.');
+  isConnectedMC = false;
+}
+
+// A function that will be called once got characteristics
+function gotCharacteristics(error, characteristics) {
+  if (error) console.log('error: ', error);
+  console.log('characteristics: ', characteristics);
+
+  // Check if myBLE is connected
+  isConnected = myBLE.isConnected();
+
+  // Add a event handler when the device is disconnected
+  myBLE.onDisconnected(onDisconnected)
+}
+
+// A function that will be called once got characteristics
+function gotCharacteristicsMC(error, characteristics) {
+  if (error) console.log('error: ', error);
+  console.log('characteristics: ', characteristics);
+
+  // Check if myBLE is connected
+  isConnectedMC = myBLEMC.isConnected();
+
+  // Add a event handler when the device is disconnected
+  myBLEMC.onDisconnected(onDisconnectedMC)
+}
+
+function draw() {
+  text('Connessione dispositivi...', 285, 20);
+  text('E-glove', 135, 80);
+  text('MeCFES', 455, 80);
+     tint(255, 10);
+    image(imgEglove_Off,60, 110);
+    tint(255, 10);
+    image(imgMC_Off, 320, 100);
+  if (isConnected) {
+       tint(255, 10);
+    image(imgEglove_On, 60, 110);
+      fill(115);
+    text('Connesso!', 135, 200);
+  } else {
+       tint(255, 10);
+    image(imgEglove_Off, 60, 1100);
+      fill(115);
+    text('Disconnesso :/', 135, 200);
+  }
+  
+  if (isConnectedMC) {
+       tint(255, 10);
+    image(imgMC_On, 320, 100);
+      fill(115);
+    text('Connesso!', 455, 200);
+  } else {
+       tint(255, 10);
+    image(imgMC_Off, 320, 100);
+      fill(115);
+    text('Disconnesso :/', 455,200);
+  }
+}
+      </script>
+    </body>
+  </html>

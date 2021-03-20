@@ -1,4 +1,6 @@
-# E-glove-preliminary-project-ArduinoUNO-HM-10
+# E-glove-preliminary-project-ArduinoUNO-HM-10-WebBT
+
+
 
 # Project aim
 Create a force sensitive E-glove to monitor the fingers' exerted force during hand grasping/gripping. The project aimed to be applied in the rehabilitation of post-stroke patients suffering from neurologic hand impairment.

@@ -1,4 +1,4 @@
-# E-glove-preliminary-project-ArduinoUNO-HM-10-WebBT
+# E-glove: preliminary project with ArduinoUNO, HM-10 BT module and WebBT application
 
 
 
